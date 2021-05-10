@@ -1,0 +1,13 @@
+﻿  ㅅㄱ.c
+C:\Users\1216 정재훈\source\repos\주식 시물레이션\주식 시물레이션\ㅅㄱ.c(21,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\1216 정재훈\source\repos\주식 시물레이션\주식 시물레이션\ㅅㄱ.c(60,11): warning C4473: 'scanf_s': 서식 문자열에 대한 인수가 충분하게 전달되지 않았습니다.
+C:\Users\1216 정재훈\source\repos\주식 시물레이션\주식 시물레이션\ㅅㄱ.c(60,11): message : 자리 표시자 및 해당 매개 변수에는 variadic 인수가 2개 필요하지만 1개가 제공되었습니다.
+C:\Users\1216 정재훈\source\repos\주식 시물레이션\주식 시물레이션\ㅅㄱ.c(60,11): message : 누락된 variadic 인수 2이(가) 서식 문자열 '%c'에 필요합니다.
+C:\Users\1216 정재훈\source\repos\주식 시물레이션\주식 시물레이션\ㅅㄱ.c(60,11): message : 이 인수는 버퍼 크기로 사용됩니다.
+C:\Users\1216 정재훈\source\repos\주식 시물레이션\주식 시물레이션\ㅅㄱ.c(96,10): warning C4477: 'scanf_s' : 서식 문자열 '%p'에 'void **' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'char (*)[20]'입니다.
+C:\Users\1216 정재훈\source\repos\주식 시물레이션\주식 시물레이션\ㅅㄱ.c(96,10): warning C4477: 'scanf_s' : 서식 문자열 '%p'에 'void **' 형식의 인수가 필요하지만 variadic 인수 2의 형식이 'char (*)[20]'입니다.
+C:\Users\1216 정재훈\source\repos\주식 시물레이션\주식 시물레이션\ㅅㄱ.c(145,11): warning C4473: 'scanf_s': 서식 문자열에 대한 인수가 충분하게 전달되지 않았습니다.
+C:\Users\1216 정재훈\source\repos\주식 시물레이션\주식 시물레이션\ㅅㄱ.c(145,11): message : 자리 표시자 및 해당 매개 변수에는 variadic 인수가 2개 필요하지만 1개가 제공되었습니다.
+C:\Users\1216 정재훈\source\repos\주식 시물레이션\주식 시물레이션\ㅅㄱ.c(145,11): message : 누락된 variadic 인수 2이(가) 서식 문자열 '%c'에 필요합니다.
+C:\Users\1216 정재훈\source\repos\주식 시물레이션\주식 시물레이션\ㅅㄱ.c(145,11): message : 이 인수는 버퍼 크기로 사용됩니다.
+  주식 시물레이션.vcxproj -> C:\Users\1216 정재훈\source\repos\주식 시물레이션\Debug\주식 시물레이션.exe
