@@ -248,7 +248,7 @@ int main(void) {
 		goto 메뉴;
 	}
 	else if (i1 == 'n') {
-		goto 은헹;
+		goto 은행;
 	}
 	else {
 		printf("다시 입력해 주세요.\n");
