@@ -18,6 +18,7 @@
 
 //변수:종목이름{a},정보{a1},가격{a2},뉴스[28개]{a3}, 내 돈(1개){b1},주식(28개){b2}, 공매도(28개(각각) or 1개(모으는 것)){b3}
 //수수료 (1개)[s],뉴스 목록(뉴스 개수 *2){1}[n],n1[28], 기본키(1)[j], 매도 매수(1){m} [이름 매도 매입 수량], 도움 (1)[i] 상승값[ss],하락 [ss1];
+//은행 : 입출 (1)[y]
 #include<stdio.h>
 #include<time.h>
 #include<Windows.h>
@@ -28,6 +29,7 @@ int main(void) {
 	srand(time(NULL));
 	char aoeh = "매도";
 	char aodlq = "매입";
+	int y = 0; //은행 입출금
 	int j;//메뉴 이동키
 	int i;//도움
 	char i1;//도움에서 메뉴로 이동하는 키
@@ -242,13 +244,15 @@ int main(void) {
 		goto 공매도;
 	}
 은행:
+	printf("1.빚 : %d\n", b1);
+	printf("2.입급 출금\t 현제금액:%d",y);
 	printf("\n\n메뉴로 돌아가시겠습니까? (y,n): ");
 	scanf("%c", &i1);
 	if (i1 == 'y') {
 		goto 메뉴;
 	}
 	else if (i1 == 'n') {
-		goto 은헹;
+		goto 은행;
 	}
 	else {
 		printf("다시 입력해 주세요.\n");
