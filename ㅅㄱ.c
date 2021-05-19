@@ -242,13 +242,14 @@ int main(void) {
 		goto 공매도;
 	}
 은행:
+	printf("빚 : %d\n", b1);
 	printf("\n\n메뉴로 돌아가시겠습니까? (y,n): ");
 	scanf("%c", &i1);
 	if (i1 == 'y') {
 		goto 메뉴;
 	}
 	else if (i1 == 'n') {
-		goto 은헹;
+		goto 은행;
 	}
 	else {
 		printf("다시 입력해 주세요.\n");
