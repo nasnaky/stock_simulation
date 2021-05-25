@@ -18,16 +18,19 @@
 
 //변수:종목이름{a},정보{a1},가격{a2},뉴스[28개]{a3}, 내 돈(1개){b1},주식(28개){b2}, 공매도(28개(각각) or 1개(모으는 것)){b3}
 //수수료 (1개)[s],뉴스 목록(뉴스 개수 *2){1}[n],n1[28], 기본키(1)[j], 매도 매수(1){m} [이름 매도 매입 수량], 도움 (1)[i] 상승값[ss],하락 [ss1];
+//은행 : 입출 (1)[y]
 #include<stdio.h>
 #include<time.h>
 #include<Windows.h>
 #define _CRT_SECURE_NO_WARNINGS
+#pragma warning(disable: 4996)
 
 
 int main(void) {
 	srand(time(NULL));
 	char aoeh = "매도";
 	char aodlq = "매입";
+	int y = 0; //은행 입출금
 	int j;//메뉴 이동키
 	int i;//도움
 	char i1;//도움에서 메뉴로 이동하는 키
@@ -109,16 +112,27 @@ int main(void) {
 		}
 		printf("\n\n");
 	}
-	printf("\n구매할 주식을 입력하시오 (매입or매도 이름 개수 ):");
-	scanf("%p %p %d",&riqos,&name,&gagag);
+	printf("\n구매할 주식을 입력하시오 (매입or매도 이름 개수 )(메뉴로 돌아갈시 y를 입력해 주세요):");
+	scanf("%s %s %d",&riqos,&name,&gagag);
 	if (riqos == "매도") {
 		printf("gka");
 		for (int a11 = 0; a11 < 28; a11++) {
 			if (a[a11] == name[a11]) {
 				if (b2[a11] < gagag) {
 					printf("개수가 적습니다.\n 확인 후 다시 매도해 주시기 바랍니다.");
-					Sleep(2000);
-					goto 주식판;
+					printf("\n\n메뉴로 돌아가시겠습니까? (y,n): ");
+					scanf("%c", &i1);
+					if (i1 == 'y') {
+						goto 메뉴;
+					}
+					else if (i1 == 'n') {
+						goto 주식판;
+					}
+					else {
+						printf("다시 입력해 주세요.\n");
+						Sleep(1);
+						goto 주식판;
+					}
 				}
 				b2[a11] -= gagag;
 				b1 += gagag * a2[a11];
@@ -131,8 +145,19 @@ int main(void) {
 			if (a[a11] == name) {
 				if (b1 < gagag * a2[a11]) {
 					printf("돈이 적습니다.\n 확인 후 다시 매수해 주시기 바랍니다.");
-					Sleep(2000);
-					goto 주식판;
+					printf("\n\n메뉴로 돌아가시겠습니까? (y,n): ");
+					scanf("%c", &i1);
+					if (i1 == 'y') {
+						goto 메뉴;
+					}
+					else if (i1 == 'n') {
+						goto 주식판;
+					}
+					else {
+						printf("다시 입력해 주세요.\n");
+						Sleep(1);
+						goto 주식판;
+					}
 				}
 				b2[a11] += gagag;
 				b1 -= gagag * a2[a11];
@@ -169,7 +194,7 @@ int main(void) {
 		printf("\n\n");
 	}
 	printf("\n알고 싶은 뉴스의 이름을 쓰시오.(다보고 싶을 떄는 all을 입력하시오):");
-	scanf("%p", &name);
+	scanf("%s", &name);
 	if (name == "all") {
 	
 	}
@@ -223,11 +248,14 @@ int main(void) {
 				b1 += a2[a11] * gagag;
 				g += a2[a11] * gagag;
 				printf(" 성공적으로 공매도 되었습니다.\n");
+				Sleep(10000);
 				for (int a9 = 0; a9 < 3; a9++) {
+					Sleep(10000);
 					printf("%d초 뒤 공매도로 이동됩니다.",3-a9);
 				}
 			}
 		}
+		Sleep(1000);
 	printf("\n\n메뉴로 돌아가시겠습니까? (y,n): ");
 	scanf("%c", &i1);
 	if (i1 == 'y') {
@@ -242,13 +270,15 @@ int main(void) {
 		goto 공매도;
 	}
 은행:
+	printf("1.빚 : %d\n", b1);
+	printf("2.입급 출금\t 현제금액:%d",y);
 	printf("\n\n메뉴로 돌아가시겠습니까? (y,n): ");
 	scanf("%c", &i1);
 	if (i1 == 'y') {
 		goto 메뉴;
 	}
 	else if (i1 == 'n') {
-		goto 은헹;
+		goto 은행;
 	}
 	else {
 		printf("다시 입력해 주세요.\n");
