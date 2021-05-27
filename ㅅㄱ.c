@@ -18,16 +18,19 @@
 
 //변수:종목이름{a},정보{a1},가격{a2},뉴스[28개]{a3}, 내 돈(1개){b1},주식(28개){b2}, 공매도(28개(각각) or 1개(모으는 것)){b3}
 //수수료 (1개)[s],뉴스 목록(뉴스 개수 *2){1}[n],n1[28], 기본키(1)[j], 매도 매수(1){m} [이름 매도 매입 수량], 도움 (1)[i] 상승값[ss],하락 [ss1];
+//은행 : 입출 (1)[y]
 #include<stdio.h>
 #include<time.h>
 #include<Windows.h>
 #define _CRT_SECURE_NO_WARNINGS
+#pragma warning(disable: 4996)
 
 
 int main(void) {
 	srand(time(NULL));
 	char aoeh = "매도";
 	char aodlq = "매입";
+	int y = 0; //은행 입출금
 	int j;//메뉴 이동키
 	int i;//도움
 	char i1;//도움에서 메뉴로 이동하는 키
@@ -36,7 +39,7 @@ int main(void) {
 	int ss1;//주식 하락값
 	int helphelp = 0;//주식 이름 출력 도움
 	int helphelp2 = 0;//주식 가격 출력 도움
-	char name[20] , riqos[20];//주식 매도 매입 도움용 변수//이름 ,개수 ,매도 매입
+	char name , riqos;//주식 매도 매입 도움용 변수//이름 ,개수 ,매도 매입
 	int gagag = 0;//개수
 	int b2[28] = {0,};//개수
 	int day = 0;//날
@@ -68,8 +71,9 @@ int main(void) {
 	system("cls");
 	switch (i) {
 	case 1: printf("기본 사용법 \n\n\n이 게임은 정보 바탕으로 하는 주식 시뮬레이션 입니다.\n 자산을 관리하여 자본을 만드세요\n이 게임은 메뉴의 bay로 인해 가격이 달라집니다.\n수수료가 날마다 달라지지며 수수료를 주위하세요\n"); break;
-	case 2: printf("키입력\n\n\n매도(판매)매입(구매)를 입력뒤\n한칸 뛰어서 구매 또는 판매 할것의 이름을 입력한 후\n한칸 뛴후 수랑을 작성합니다.(위 프로그램을 올인을 판매하지 않습니다)\n");
-	case 3: printf("공매도란?\n\n\n공매도란 주식을 먼저 판매를 한 후 판매한 주식을 일정 기간안에 갚는 것을 말합니다.\n예)gsm주식을 3만원에 1를 팔고 다음날 gsm주식을 1를 갚는 것이다.\n");
+	case 2: printf("키입력\n\n\n매도(판매)매입(구매)를 입력뒤\n한칸 뛰어서 구매 또는 판매 할것의 이름을 입력한 후\n한칸 뛴후 수랑을 작성합니다.(위 프로그램을 올인을 판매하지 않습니다)\n"); break;
+	case 3: printf("공매도란?\n\n\n공매도란 주식을 먼저 판매를 한 후 판매한 주식을 일정 기간안에 갚는 것을 말합니다.\n예)gsm주식을 3만원에 1를 팔고 다음날 gsm주식을 1를 갚는 것이다.\n"); break;
+
 	}
 		printf("\n\n메뉴로 돌아가시겠습니까? (y,n): ");
 		scanf("%c", &i1);
@@ -109,35 +113,60 @@ int main(void) {
 		}
 		printf("\n\n");
 	}
-	printf("\n구매할 주식을 입력하시오 (매입or매도 이름 개수 ):");
-	scanf("%p %p %d",&riqos,&name,&gagag);
-	if (riqos == "매도") {
+	printf("\n구매할 주식을 입력하시오 (매입or매도 이름 개수 )(메뉴로 돌아갈시 y를 입력해 주세요):");
+	scanf("%s %s %d",&riqos,&name,&gagag);
+	switch (riqos)
+	{
+	case '매도':
 		printf("gka");
-		for (int a11 = 0; a11 < 28; a11++) {
+		Sleep(5000);
+		/*for (int a11 = 0; a11 < 28; a11++) {
 			if (a[a11] == name[a11]) {
 				if (b2[a11] < gagag) {
 					printf("개수가 적습니다.\n 확인 후 다시 매도해 주시기 바랍니다.");
-					Sleep(2000);
-					goto 주식판;
+					printf("\n\n메뉴로 돌아가시겠습니까? (y,n): ");
+					scanf("%c", &i1);
+					if (i1 == 'y') {
+						goto 메뉴;
+					}
+					else if (i1 == 'n') {
+						goto 주식판;
+					}
+					else {
+						printf("다시 입력해 주세요.\n");
+						Sleep(1);
+						goto 주식판;
+					}
 				}
 				b2[a11] -= gagag;
 				b1 += gagag * a2[a11];
 			}
-		}
-	}
-	else if (riqos == "매입") {
+		}*/
+	case '매입':
 		printf("gka");
-		for (int a11 = 0; a11 < 28; a11++) {
+		Sleep(5000);
+		/*for (int a11 = 0; a11 < 28; a11++) {
 			if (a[a11] == name) {
 				if (b1 < gagag * a2[a11]) {
 					printf("돈이 적습니다.\n 확인 후 다시 매수해 주시기 바랍니다.");
-					Sleep(2000);
-					goto 주식판;
+					printf("\n\n메뉴로 돌아가시겠습니까? (y,n): ");
+					scanf("%c", &i1);
+					if (i1 == 'y') {
+						goto 메뉴;
+					}
+					else if (i1 == 'n') {
+						goto 주식판;
+					}
+					else {
+						printf("다시 입력해 주세요.\n");
+						Sleep(1);
+						goto 주식판;
+					}
 				}
 				b2[a11] += gagag;
 				b1 -= gagag * a2[a11];
 			}
-		}
+		}*/
 	}
 	printf("\n\n메뉴로 돌아가시겠습니까? (y,n): ");
 	scanf("%c", &i1);
@@ -169,7 +198,7 @@ int main(void) {
 		printf("\n\n");
 	}
 	printf("\n알고 싶은 뉴스의 이름을 쓰시오.(다보고 싶을 떄는 all을 입력하시오):");
-	scanf("%p", &name);
+	scanf("%s", &name);
 	if (name == "all") {
 	
 	}
@@ -223,11 +252,14 @@ int main(void) {
 				b1 += a2[a11] * gagag;
 				g += a2[a11] * gagag;
 				printf(" 성공적으로 공매도 되었습니다.\n");
+				Sleep(10000);
 				for (int a9 = 0; a9 < 3; a9++) {
+					Sleep(10000);
 					printf("%d초 뒤 공매도로 이동됩니다.",3-a9);
 				}
 			}
 		}
+		Sleep(1000);
 	printf("\n\n메뉴로 돌아가시겠습니까? (y,n): ");
 	scanf("%c", &i1);
 	if (i1 == 'y') {
@@ -242,13 +274,15 @@ int main(void) {
 		goto 공매도;
 	}
 은행:
+	printf("1.빚 : %d\n", b1);
+	printf("2.입급 출금\t 현제금액:%d",y);
 	printf("\n\n메뉴로 돌아가시겠습니까? (y,n): ");
 	scanf("%c", &i1);
 	if (i1 == 'y') {
 		goto 메뉴;
 	}
 	else if (i1 == 'n') {
-		goto 은헹;
+		goto 은행;
 	}
 	else {
 		printf("다시 입력해 주세요.\n");
